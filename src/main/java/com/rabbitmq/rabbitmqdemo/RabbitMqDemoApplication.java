@@ -17,6 +17,7 @@ public class RabbitMqDemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		rabbitTemplate.convertAndSend("TestExchange", "testRoutingKey", "Hello from code!!");
+		SimpleMessage simpleMessage = new SimpleMessage("Test message", "Hello from object!");
+		rabbitTemplate.convertAndSend("EXAMPLE_EXCHANGE_USING_BUILDER", "MY_TOPIC", simpleMessage);
 	}
 }
